@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { fetchMovie } from "../actions/movieActions";
+import {fetchMovie, leaveReview, setMovie} from "../actions/movieActions";
 import {connect} from 'react-redux';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
+import { LeaveReview } from "../components/leavereview"
 
 class MovieDetail extends Component {
 
@@ -12,6 +13,16 @@ class MovieDetail extends Component {
         if (this.props.selectedMovie == null) {
             dispatch(fetchMovie(this.props.movieId));
         }
+    }
+
+    handleSubmit(selectedMovie) {
+        const {dispatch} = this.props;
+        dispatch(leaveReview(selectedMovie))
+        //alert('A review was submitted: ' );
+    }
+
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
 
     render() {
@@ -29,7 +40,7 @@ class MovieDetail extends Component {
                     <ListGroup>
                         <ListGroupItem>{this.props.selectedMovie.title}</ListGroupItem>
                         <ListGroupItem>
-                            {this.props.selectedMovie.actors.map((actor, i) =>
+                            {this.props.selectedMovie.leadActors.map((actor, i) =>
                                 <p key={i}>
                                     <b>{actor.actorName}</b> {actor.characterName}
                                 </p>)}
@@ -37,15 +48,15 @@ class MovieDetail extends Component {
                         <ListGroupItem><h4><BsStarFill/> {this.props.selectedMovie.avgRating}</h4></ListGroupItem>
                     </ListGroup>
                     <Card.Body>
-                        {this.props.selectedMovie.reviews.map((review, i) =>
+                        {this.props.selectedMovie.moviereviews.map((review, i) =>
                             <p key={i}>
-                                <b>{review.username}</b>&nbsp; {review.review}
+                                <b>{review.reviewer}</b>&nbsp; {review.quote}
                                 &nbsp;  <BsStarFill /> {review.rating}
                             </p>
                         )}
                     </Card.Body>
                 </Card>
-            )
+            );
         }
 
         return (
