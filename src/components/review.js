@@ -3,7 +3,7 @@ import { leaveReview } from '../actions/movieActions';
 import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 
-class Review extends Component {
+class ReviewForm extends Component {
 
     constructor(props){
         super(props);
@@ -14,7 +14,8 @@ class Review extends Component {
             details:{
                 rating: '',
                 username: '',
-                quote: ''
+                quote: '',
+                movietitle: ''
             }
         };
     }
@@ -29,6 +30,7 @@ class Review extends Component {
 
     review(){
         const {dispatch} = this.props;
+        this.state.details.movietitle = this.props.selectedMovie.title;
         dispatch(leaveReview(this.state.details));
     }
 
@@ -42,7 +44,7 @@ class Review extends Component {
 
                 <Form.Group controlId="username">
                     <Form.Label>User</Form.Label>
-                    <Form.Control onChange={this.updateDetails} value={this.state.details.username} type="email" placeholder="username" />
+                    <Form.Control onChange={this.updateDetails} value={this.props.username} type="email" placeholder="username" />
                 </Form.Group>
 
                 <Form.Group controlId="quote">
@@ -57,8 +59,9 @@ class Review extends Component {
 
 const mapStateToProps = state => {
     return {
-        selectedMovie: state.movie.selectedMovie
+        selectedMovie: state.movie.selectedMovie,
+        username: state.auth.username
     }
 }
 
-export default connect(mapStateToProps)(Review);
+export default connect(mapStateToProps)(ReviewForm);

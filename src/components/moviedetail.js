@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {fetchMovie, leaveReview, setMovie} from "../actions/movieActions";
+import {fetchMovie, setMovie} from "../actions/movieActions";
 import {connect} from 'react-redux';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
-import { Review } from './review'
+import ReviewForm from './review'
 
 class MovieDetail extends Component {
 
@@ -45,7 +45,7 @@ class MovieDetail extends Component {
                             </p>
                         )}
                     </Card.Body>
-                    <Review />
+                    <ReviewForm />
                 </Card>
             );
         }
@@ -59,6 +59,7 @@ class MovieDetail extends Component {
 const mapStateToProps = state => {
     return {
         selectedMovie: state.movie.selectedMovie
+
     }
 }
 

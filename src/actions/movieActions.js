@@ -77,7 +77,7 @@ export function fetchMovies() {
 export function leaveReview(movieTitle) {
     const env = runtimeEnv();
     return dispatch => {
-        return fetch(`${env.REACT_APP_API_URL}/reviews+'/${movieTitle}'`, {
+        return fetch(`${env.REACT_APP_API_URL}/reviews`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -92,7 +92,7 @@ export function leaveReview(movieTitle) {
             }
             return response.json()
         }).then((res) => {
-            dispatch(movieFetched(res));
+            //dispatch(movieFetched(res));
         }).catch((e) => console.log(e));
     }
 }
