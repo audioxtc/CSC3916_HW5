@@ -23,6 +23,7 @@ function movieSet(movie) {
     }
 }
 
+
 export function setMovie(movie) {
     return dispatch => {
         dispatch(movieSet(movie));
@@ -72,7 +73,7 @@ export function fetchMovies() {
         }).catch((e) => console.log(e));
     }
 }
-/*
+
 export function leaveReview(movieTitle) {
     const env = runtimeEnv();
     return dispatch => {
@@ -83,6 +84,7 @@ export function leaveReview(movieTitle) {
                 'Content-Type': 'application/json',
                 'Authorization': localStorage.getItem('token')
             },
+            body: JSON.stringify(movieTitle),
             mode: 'cors'
         }).then((response ) => {
             if (!response.ok) {
@@ -94,5 +96,3 @@ export function leaveReview(movieTitle) {
         }).catch((e) => console.log(e));
     }
 }
-
- */
