@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { BsStarFill } from 'react-icons/bs'
 import { Image } from 'react-bootstrap';
-import { LeaveReview } from "../components/leavereview"
 
 class MovieDetail extends Component {
 
@@ -13,16 +12,6 @@ class MovieDetail extends Component {
         if (this.props.selectedMovie == null) {
             dispatch(fetchMovie(this.props.movieId));
         }
-    }
-
-    handleSubmit(selectedMovie) {
-        const {dispatch} = this.props;
-        dispatch(leaveReview(selectedMovie))
-        //alert('A review was submitted: ' );
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
     }
 
     render() {
