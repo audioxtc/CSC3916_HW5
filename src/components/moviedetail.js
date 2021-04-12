@@ -45,7 +45,7 @@ class MovieDetail extends Component {
                             </p>
                         )}
                     </Card.Body>
-                    <Review>&nbsp</Review>
+                    <Review />
                 </Card>
             );
         }

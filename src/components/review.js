@@ -3,7 +3,7 @@ import { leaveReview } from '../actions/movieActions';
 import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 
-export class Review extends Component {
+class Review extends Component {
 
     constructor(props){
         super(props);
@@ -37,7 +37,7 @@ export class Review extends Component {
             <Form className='form-horizontal'>
                 <Form.Group controlId="rating">
                     <Form.Label>Your rating</Form.Label>
-                    <Form.Control onChange={this.updateDetails} value={this.state.details.name} type="number" placeholder="rating from 1-5 stars" />
+                    <Form.Control onChange={this.updateDetails} value={this.state.details.rating} type="text" placeholder="rating from 1-5 stars" />
                 </Form.Group>
 
                 <Form.Group controlId="username">
@@ -57,7 +57,8 @@ export class Review extends Component {
 
 const mapStateToProps = state => {
     return {
+        selectedMovie: state.movie.selectedMovie
     }
 }
 
-export default connect(mapStateToProps);
+export default connect(mapStateToProps)(Review);
