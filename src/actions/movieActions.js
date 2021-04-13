@@ -92,6 +92,7 @@ export function leaveReview(movieTitle) {
             }
             return response.json()
         }).then((res) => {
+            window.location.reload(true);
             //dispatch(movieFetched(res));
         }).catch((e) => console.log(e));
     }

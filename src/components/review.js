@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { leaveReview } from '../actions/movieActions';
+import { leaveReview, setMovie } from '../actions/movieActions';
 import { connect } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 
